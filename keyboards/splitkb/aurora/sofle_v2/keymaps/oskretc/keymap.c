@@ -3,6 +3,12 @@
 #    include "keymap.h"
 #endif
 #include "ppp.h"
+#include "gpio.h"
+
+void keyboard_pre_init_user(void) {
+    gpio_set_pin_output(24);
+    gpio_write_pin_high(24);
+}
 
 /* THIS FILE WAS GENERATED!
  *
@@ -21,14 +27,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case P1:
         if (record->event.pressed) {
-            send_string_with_delay(P1_S, 30);
+            send_string_with_delay(P1_S, 20);
         } else {
             // when keycode QMKBEST is released
         }
         break;
     case P2:
         if (record->event.pressed) {
-            send_string_with_delay(P2_S, 30);
+            send_string_with_delay(P2_S, 20);
         } else {
             // when keycode QMKBEST is released
         }
@@ -89,7 +95,7 @@ KC_EQL, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, 
 ),
     [7] = LAYOUT(
  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
- XXXXXXX, XXXXXXX, KC_ASTR, KC_COLN, KC_ESC, KC_EQL, XXXXXXX, P2, P1, XXXXXXX, RCS(KC_P), XXXXXXX,
+ XXXXXXX, CW_TOGG, KC_ASTR, KC_COLN, KC_ESC, KC_EQL, XXXXXXX, P2, P1, XXXXXXX, RCS(KC_P), XXXXXXX,
  XXXXXXX, XXXXXXX, KC_PERC, KC_SLSH, KC_ENT, KC_MINS, DF(0), KC_LGUI, KC_RSFT, XXXXXXX, XXXXXXX, XXXXXXX,
  XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, RCS(KC_V), RGUI(KC_TAB), XXXXXXX, XXXXXXX, DF(1), KC_RALT, KC_RCTL, XXXXXXX,
  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, KC_TAB, _______, _______, _______, XXXXXXX, XXXXXXX
@@ -99,8 +105,8 @@ KC_EQL, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, 
 
 const uint16_t PROGMEM combo_del[] = {KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_N, KC_M, COMBO_END};
-const uint16_t PROGMEM combo_copy[] = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM combo_paste[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM combo_copy[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo_paste[] = {KC_E, KC_R, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo_del, KC_DEL),
     COMBO(combo_esc, KC_ESC), // keycodes with modifiers are possible too!
@@ -109,8 +115,14 @@ combo_t key_combos[] = {
 };
 
 
-
-
+void caps_word_set_user(bool active) {
+    if (active) {
+        // Do something when Caps Word activates.
+        gpio_write_pin_low(24);
+    } else {
+        gpio_write_pin_high(24);
+    }
+}
 
 #ifdef OTHER_KEYMAP_C
 #    include OTHER_KEYMAP_C
