@@ -5,6 +5,28 @@
 #include "ppp.h"
 #include "gpio.h"
 
+
+#define A_LSFT LSFT_T(KC_A)
+#define S_L6 LT(6,KC_S)
+#define D_L2 LT(2,KC_D)
+#define F_L3 LT(3,KC_F)
+#define G_LSFT LSFT_T(KC_G)
+#define H_RSFT RSFT_T(KC_H)
+#define J_L4 LT(4,KC_J)
+#define K_L1 LT(1,KC_K)
+#define L_L5 LT(5,KC_L)
+#define SC_RSFT RSFT_T(KC_SCLN)
+
+
+#define X_LCTLM LCTL_T(KC_X)
+#define C_LALT LALT_T(KC_C)
+#define CM_RALT RALT_T(KC_COMM)
+#define DO_RCTL RCTL_T(KC_DOT)
+#define TAB_L8 LT(8,KC_TAB)
+#define ENT_LCT LCTL_T(KC_ENT)
+#define SPC_L7 LT(7,KC_SPC)
+
+    
 void keyboard_pre_init_user(void) {
     gpio_set_pin_output(24);
     gpio_write_pin_high(24);
@@ -46,17 +68,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
-XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-XXXXXXX, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                 KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , XXXXXXX,
-XXXXXXX, LSFT_T(KC_A), LT(6,KC_S), LT(2,KC_D), LT(3,KC_F), LSFT_T(KC_G), RSFT_T(KC_H), LT(4,KC_J), LT(1,KC_K), LT(5,KC_L), RSFT_T(KC_SCLN), XXXXXXX,
-XXXXXXX, KC_Z   , LCTL_T(KC_X), LALT_T(KC_C), KC_V, KC_B, XXXXXXX, XXXXXXX, KC_N, KC_M, RALT_T(KC_COMM), RCTL_T(KC_DOT), KC_SLSH, XXXXXXX,
-XXXXXXX, XXXXXXX, KC_ESC, LT(8,KC_TAB), LCTL_T(KC_ENT), LT(7,KC_SPC), KC_BSPC, KC_RGUI, XXXXXXX, XXXXXXX),
+XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+XXXXXXX, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , XXXXXXX,
+XXXXXXX, A_LSFT , S_L6   , D_L2   , F_L3   , G_LSFT ,                   H_RSFT , J_L4   , K_L1   , L_L5   , SC_RSFT, XXXXXXX,
+XXXXXXX, KC_Z   , X_LCTLM, C_LALT , KC_V   , KC_B   , XXXXXXX, XXXXXXX, KC_N   , KC_M   , CM_RALT, DO_RCTL, KC_SLSH, XXXXXXX,
+                  XXXXXXX, XXXXXXX, KC_ESC , TAB_L8 , ENT_LCT, SPC_L7 , KC_BSPC, KC_RGUI, XXXXXXX, XXXXXXX
+              ),
     [1] = LAYOUT(
-XXXXXXX  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-XXXXXXX  , _______, _______, MS_UP, MS_WHLU, _______, _______, _______, _______, _______, _______, XXXXXXX,
-XXXXXXX  , _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1, MS_BTN1, MS_BTN1, _______, MS_BTN2, _______, XXXXXXX,
-XXXXXXX  , _______, _______, _______, MS_WHLD, DF(0), XXXXXXX, XXXXXXX, _______, _______, _______, _______,
-XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX
+XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+XXXXXXX, _______, _______, MS_UP  , MS_WHLU, _______,                   _______, _______, _______, _______, _______, XXXXXXX,
+XXXXXXX, _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1,                   MS_BTN1, MS_BTN1, _______, MS_BTN2, _______, XXXXXXX,
+XXXXXXX, _______, _______, _______, MS_WHLD, DF(0)  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______,
+                  XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX
 ),
     [2] = LAYOUT(
  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
