@@ -6,6 +6,7 @@
 #include "gpio.h"
 
 
+
 #define A_LSFT LSFT_T(KC_A)
 #define S_L6 LT(6,KC_S)
 #define D_L2 LT(2,KC_D)
