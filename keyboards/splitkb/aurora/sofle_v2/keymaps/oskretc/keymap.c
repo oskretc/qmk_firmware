@@ -8,14 +8,21 @@
 
 
 #define A_LSFT LSFT_T(KC_A)
-#define S_L6 LT(6,KC_S)
-#define D_L2 LT(2,KC_D)
-#define F_L3 LT(3,KC_F)
+#define S_L6 LT(7,KC_S)   // qwerty
+#define R_L6 LT(7,KC_R)   // colemak
+#define D_L2 LT(3,KC_D)  // qwerty
+#define S_L2 LT(3,KC_S)  // colemak
+#define F_L3 LT(4,KC_F) // qwerty
+#define T_L3 LT(4,KC_T) // colemak
 #define G_LSFT LSFT_T(KC_G)
-#define H_RSFT RSFT_T(KC_H)
-#define J_L4 LT(4,KC_J)
-#define K_L1 LT(1,KC_K)
-#define L_L5 LT(5,KC_L)
+#define H_RSFT RSFT_T(KC_H) //qwerty
+#define M_RSFT RSFT_T(KC_M) //qwerty
+#define J_L4 LT(5,KC_J) // qwerty
+#define N_L4 LT(5,KC_N) // colemak
+#define K_L1 LT(2,KC_K) // qwerty
+#define E_L1 LT(2,KC_E) // colemak
+#define L_L5 LT(6,KC_L) // qwerty
+#define I_L5 LT(6,KC_I) // colemak
 #define SC_RSFT RSFT_T(KC_SCLN)
 
 
@@ -23,9 +30,9 @@
 #define C_LALT LALT_T(KC_C)
 #define CM_RALT RALT_T(KC_COMM)
 #define DO_RCTL RCTL_T(KC_DOT)
-#define TAB_L8 LT(8,KC_TAB)
+#define TAB_L8 LT(9,KC_TAB)
 #define ENT_LCT LCTL_T(KC_ENT)
-#define SPC_L7 LT(7,KC_SPC)
+#define SPC_L7 LT(8,KC_SPC)
 
 #define PRETAB RCS(KC_TAB)
 #define NEXTAB LCTL(KC_TAB)
@@ -99,68 +106,76 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT(
+    [0] = LAYOUT( 
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   ,                   KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , XXXXXXX,
 XXXXXXX, A_LSFT , S_L6   , D_L2   , F_L3   , G_LSFT ,                   H_RSFT , J_L4   , K_L1   , L_L5   , SC_RSFT, XXXXXXX,
 XXXXXXX, KC_Z   , X_LCTLM, C_LALT , KC_V   , KC_B   , XXXXXXX, XXXXXXX, KC_N   , KC_M   , CM_RALT, DO_RCTL, KC_SLSH, XXXXXXX,
                   XXXXXXX, XXXXXXX, KC_ESC , TAB_L8 , ENT_LCT, SPC_L7 , KC_BSPC, KC_RGUI, XXXXXXX, XXXXXXX
-              ),
-    [1] = LAYOUT(
+),
+    [1] = LAYOUT( // colemak
+XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+XXXXXXX, KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   ,                   KC_J   , KC_L   , KC_U   , KC_Y   , SC_RSFT, XXXXXXX,
+XXXXXXX, A_LSFT , R_L6   , S_L2   , T_L3   , G_LSFT ,                   M_RSFT , N_L4   , E_L1   , I_L5   , KC_O   , XXXXXXX,
+XXXXXXX, KC_Z   , X_LCTLM, C_LALT , KC_D   , KC_V   , XXXXXXX, XXXXXXX, KC_K   , KC_H   , CM_RALT, DO_RCTL, KC_SLSH, XXXXXXX,
+                  DF(0)  , XXXXXXX, KC_ESC , TAB_L8 , ENT_LCT, SPC_L7 , KC_BSPC, KC_RGUI, XXXXXXX, XXXXXXX
+),
+    [2] = LAYOUT( // mouse 
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, _______, _______, MS_UP  , MS_WHLU, _______,                   _______, _______, _______, _______, _______, XXXXXXX,
 XXXXXXX, _______, MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN1,                   MS_BTN1, MS_BTN1, _______, MS_BTN2, _______, XXXXXXX,
 XXXXXXX, _______, _______, _______, MS_WHLD, DF(0)  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX,
                   XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX
 ),
-    [2] = LAYOUT(
+    [3] = LAYOUT( // nav
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, _______, _______, _______, _______, _______,                   KC_HOME, KC_PGUP, KC_END , _______, _______, XXXXXXX,
 XXXXXXX, _______, _______, _______, PRETAB , NEXTAB ,                   KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, _______, XXXXXXX,
 XXXXXXX, _______, _______, _______, _______, WINTAB , XXXXXXX, XXXXXXX, KC_DEL , KC_PGDN, KC_INS , _______, _______, XXXXXXX,
                   XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX
 ),
-    [3] = LAYOUT(
+    [4] = LAYOUT( // right 
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, _______, _______, _______, _______, _______,                   _______, KC_UNDS, KC_PIPE, KC_QUOT, _______, XXXXXXX,
 XXXXXXX, KC_CIRC, KC_ASTR, KC_AMPR, _______, _______,                   KC_HASH, KC_TILD, KC_SLSH, KC_DQUO, KC_DLR , XXXXXXX,
 XXXXXXX, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, _______, KC_MINS, KC_BSLS, KC_GRV , _______, XXXXXXX,
                   XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX
 ),
-    [4] = LAYOUT(
+    [5] = LAYOUT(
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, _______, KC_COLN, KC_LT  , KC_GT  , KC_SCLN,                   _______, _______, _______, _______, _______, XXXXXXX,
 XXXXXXX, KC_LCBR, KC_RCBR, KC_LPRN, KC_RPRN, KC_AT  ,                   _______, _______, KC_EQL , KC_PLUS, KC_PERC, XXXXXXX,
 XXXXXXX, _______, KC_EXLM, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, XXXXXXX,
                   XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX
 ),
-    [5] = LAYOUT(
+    [6] = LAYOUT(
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, _______, KC_F1  , KC_F2  , KC_F3  , KC_F10 ,                   _______, KC_F2  , _______, _______, _______, XXXXXXX,
 XXXXXXX, _______, KC_F4  , KC_F5  , KC_F6  , KC_F11 ,                   _______, KC_F5  , KC_F12 , _______, _______, XXXXXXX,
 XXXXXXX, _______, KC_F7  , KC_F8  , KC_F9  , KC_F12 , XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, XXXXXXX,
                   XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX
 ),
-    [6] = LAYOUT(
+    [7] = LAYOUT(
 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, _______, _______, _______, KC_ASTR, KC_PLUS,                   KC_0   , KC_1   , KC_2   , KC_3   , KC_PLUS, XXXXXXX,
 XXXXXXX, _______, _______, _______, _______, KC_MINS,                   KC_SLSH, KC_4   , KC_5   , KC_6   , KC_MINS, XXXXXXX,
 XXXXXXX, _______, _______, _______, _______, KC_EQL , XXXXXXX, XXXXXXX, KC_DOT , KC_7   , KC_8   , KC_9   , KC_EQL , XXXXXXX,
                   XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX
 ),
-    [7] = LAYOUT(
+    [8] = LAYOUT(
 DB_TOGG	, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, CW_TOGG, KC_ASTR, KC_COLN, KC_ESC , KC_EQL ,                   XXXXXXX, P2     , P1     , XXXXXXX, CSP    , XXXXXXX,
 XXXXXXX, XXXXXXX, KC_PERC, KC_SLSH, KC_ENT , KC_MINS,                   DF(0)  , KC_LGUI, KC_RSFT, XXXXXXX, XXXXXXX, XXXXXXX,
-XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, CSV    , WINTAB , XXXXXXX, XXXXXXX, DF(1)  , KC_RALT, KC_RCTL, XXXXXXX, XXXXXXX, XXXXXXX,
-                  XXXXXXX, XXXXXXX, _______, _______, KC_TAB , _______, _______, _______, XXXXXXX, XXXXXXX
+XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, CSV    , WINTAB , XXXXXXX, XXXXXXX, DF(2)  , KC_RALT, KC_RCTL, XXXXXXX, XXXXXXX, XXXXXXX,
+                  DF(1)  , XXXXXXX, _______, _______, KC_TAB , _______, _______, _______, XXXXXXX, XXXXXXX
 ),
-    [8] = LAYOUT(
+    [9] = LAYOUT(
 RGB_TOG,RGB_RMOD, RGB_MOD, XXXXXXX, XXXXXXX, QK_BOOT,                   QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, WS1    , WS2    , WS3    , WS4    , WS5    ,                   WS6    , WS7    , WS8    , WS9    , WS0    , XXXXXXX,
 RGB_VAI, XXXXXXX, MV_LF  , MV_UP  , MV_DN  , MV_RG  ,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX, XXXXXXX,
 RGB_VAD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX, XXXXXXX,
-                  XXXXXXX, XXXXXXX, _______, _______, _______, LALT(KC_SPC), _______, _______, XXXXXXX, XXXXXXX)
+                  XXXXXXX, XXXXXXX, _______, _______, _______, LALT(KC_SPC), _______, _______, XXXXXXX, XXXXXXX
+)
 };
 
 const uint16_t PROGMEM combo_del[] = {KC_V, KC_B, COMBO_END};
