@@ -165,14 +165,14 @@ XXXXXXX, _______, _______, _______, _______, KC_EQL , XXXXXXX, XXXXXXX, KC_DOT ,
     [8] = LAYOUT(
 DB_TOGG	, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, CW_TOGG, KC_ASTR, KC_COLN, KC_ESC , KC_EQL ,                   XXXXXXX, P2     , P1     , XXXXXXX, CSP    , XXXXXXX,
-XXXXXXX, XXXXXXX, KC_PERC, KC_SLSH, KC_ENT , KC_MINS,                   DF(0)  , KC_LGUI, KC_RSFT, XXXXXXX, XXXXXXX, XXXXXXX,
-XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, CSV    , WINTAB , XXXXXXX, XXXXXXX, DF(2)  , KC_RALT, KC_RCTL, XXXXXXX, XXXXXXX, XXXXXXX,
-                  DF(1)  , XXXXXXX, _______, _______, KC_TAB , _______, _______, _______, XXXXXXX, XXXXXXX
+XXXXXXX, _______, KC_PERC, KC_SLSH, KC_ENT , KC_MINS,                   DF(0)  , KC_LGUI, KC_RSFT, XXXXXXX, _______, XXXXXXX,
+XXXXXXX, XXXXXXX, XXXXXXX, KC_TILD, CSV    , WINTAB , XXXXXXX, XXXXXXX, DF(1)  , KC_RALT, KC_RCTL, XXXXXXX, XXXXXXX, XXXXXXX,
+                  XXXXXXX, XXXXXXX, _______, _______, KC_TAB , _______, _______, _______, XXXXXXX, XXXXXXX
 ),
     [9] = LAYOUT(
 RGB_TOG,RGB_RMOD, RGB_MOD, XXXXXXX, XXXXXXX, QK_BOOT,                   QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 XXXXXXX, WS1    , WS2    , WS3    , WS4    , WS5    ,                   WS6    , WS7    , WS8    , WS9    , WS0    , XXXXXXX,
-RGB_VAI, XXXXXXX, MV_LF  , MV_UP  , MV_DN  , MV_RG  ,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , XXXXXXX, XXXXXXX,
+RGB_VAI, _______, MV_LF  , MV_UP  , MV_DN  , MV_RG  ,                   FO_LF  , FO_DN  , FO_UP  , FO_RG  , _______, XXXXXXX,
 RGB_VAD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, WS_LF  , WS_RG  , WS_TAB , XXXXXXX, XXXXXXX, XXXXXXX,
                   XXXXXXX, XXXXXXX, _______, _______, _______, LALT(KC_SPC), _______, _______, XXXXXXX, XXXXXXX
 )
